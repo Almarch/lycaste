@@ -28,7 +28,7 @@ This creates db.sqlite3. It can be opened with DBeaver.
 Let's create an application. A web project can be made of several applications.
 
 ```sh
-python manage.py startapp www
+python manage.py startapp main
 ```
 
 The app should be added into lycaste/lycaste/settings.py
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'www', # <- here
+    'main', # <- here
 ]
 ```
 

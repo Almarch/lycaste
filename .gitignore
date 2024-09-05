@@ -1,6 +1,6 @@
 env
 lycaste/db.sqlite3
 lycaste/lycaste/__pycache__/*
-lycaste/www/__pycache__/*
-lycaste/www/migrations/__pycache__/*
-lycaste/www/static/img
+lycaste/main/__pycache__/*
+lycaste/main/migrations/__pycache__/*
+lycaste/main/static/img
