@@ -77,3 +77,13 @@ python manage.py shell
 ```sh
 python manage.py runserver
 ```
+
+## Admin
+
+Create a superuser:
+
+```sh
+python manage.py createsuperuser
+```
+
+Admin board is now available at /admin
