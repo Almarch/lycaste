@@ -26,6 +26,10 @@ SECRET_KEY = 'django-insecure-y3$55glxnw31fr+ma+yidluxhwz4*oi!rp=6pmdi=%k!3yv0wx
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'lycaste.eu', 'www.lycaste.eu']
+CSRF_TRUSTED_ORIGINS = [
+    'https://lycaste.eu',
+    'https://www.lycaste.eu',
+]
 
 # Application definition
 
