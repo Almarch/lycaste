@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang=”fr”>
 
@@ -5,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>Orchidées emblématiques du Guatemala</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 
 <body>
@@ -26,7 +28,7 @@
     </nav>
     
     <header>
-        <img src="../img/monja-blanca1.jpg"
+        <img src="{% static 'img/monja-blanca1.jpg' %}"
              alt="bannière"
              title="L'emblématique monja blanca"
              class="banner" 
