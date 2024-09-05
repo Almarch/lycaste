@@ -46,11 +46,13 @@ INSTALLED_APPS = [
 ]
 ```
 
-## MVT: Models, Views, Tests
+## MVT: Models, Views, Templates
 
 Views are website pages. They are added in the appli /views.py & in the project urls.py.
 
 Models are both SQL entries and Python classes. In other terms, they allow for permanent objects.
+
+Templates are html pre-formatted pages.
 
 ## Migrations
 
