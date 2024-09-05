@@ -87,3 +87,7 @@ python manage.py createsuperuser
 ```
 
 Admin board is now available at /admin
+
+## License
+
+This project and embedded resources are copyrighted and the property of their author.
