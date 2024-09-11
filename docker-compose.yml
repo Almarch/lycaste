@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:13
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
@@ -17,7 +17,7 @@ services:
   web:
     build: ./lycaste
     volumes:
-      - img_data:/app/data/img
+      - ./data/img:/app/lycaste/main/static/img
     ports:
       - "8000:8000"
     environment:
@@ -31,9 +31,6 @@ services:
     networks:
       - django_network
 
-volumes:
-  db_data:
-  img_data:
-
 networks:
   django_network:
+      driver: bridge
