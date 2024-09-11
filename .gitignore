@@ -1,6 +1,4 @@
-env
-lycaste/db.sqlite3
-lycaste/lycaste/__pycache__/*
-lycaste/main/__pycache__/*
-lycaste/main/migrations/__pycache__/*
-lycaste/main/static/img
+data/*
+django/main/__pycache__
+django/main/migrations/__pycache__
+django/project/__pycache__
