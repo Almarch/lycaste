@@ -1,4 +1,6 @@
-data/*
-django/main/__pycache__
-django/main/migrations/__pycache__
-django/project/__pycache__
+.env
+data
+env
+lycaste/main/__pycache__
+lycaste/main/migrations/__pycache__
+lycaste/lycaste/__pycache__
