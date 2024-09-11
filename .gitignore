@@ -1,6 +1,4 @@
 .env
 data
 env
-lycaste/main/__pycache__
-lycaste/main/migrations/__pycache__
-lycaste/lycaste/__pycache__
+__pycache__
