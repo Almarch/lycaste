@@ -86,7 +86,56 @@ Create a superuser:
 python manage.py createsuperuser
 ```
 
-Admin board is now available at /admin
+Admin board is now available at lycaste.eu/admin
+
+## Dockerization
+
+The project is dockerized using docker-compose.
+
+- The PostgreSQL data base runs as a service.
+- The Django app runs as a service.
+
+2 important folders are not gitted:
+
+- .env contains all secrets (db & django app credentials). It looks like:
+
+```sh
+POSTGRES_DB=db_prod
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=qwerty
+DJANGO_SECRET_KEY=12345
+```
+
+- data contains 2 subfolders:
+    - db, which is the database volume ;
+    - img, with all graphical resources needed for the website.
+
+These files need to be manually added & updated to the VPS environment.
+
+The app is built & launched using:
+
+```sh
+docker-compose build
+docker-compose up
+```
+
+To manage the django app, it is required to enter within the webapp container. First identify the webapp container id:
+
+```sh
+docker ps
+```
+
+Say "id123", then:
+
+```sh
+docker exec -it id123 bash
+```
+
+to enter the container from which `python manage.py` commands may be launched.
+
+## Database access
+
+The database may be accessed from lycaste.eu/admin, using the right credentials ; or from DBeaver from one of the few IPs that are allowed to access port 5432 in the UFW configuration.
 
 ## License
 
