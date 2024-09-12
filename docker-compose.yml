@@ -17,7 +17,7 @@ services:
   web:
     build: ./lycaste
     volumes:
-      - ./data/img:/app/lycaste/main/static/img
+      - ./data/img:/app/main/static/img
     ports:
       - "8000:8000"
     environment:
