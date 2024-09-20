@@ -50,6 +50,8 @@ services:
     volumes:
       - ./data/smtp/mail:/var/mail
       - ./data/smtp/mail-state:/var/mail-state
+      - ./data/config:/tmp/docker-mailserver
+      - ./data/sasl2:/var/lib/sasl2
       - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "25:25"    # SMTP
