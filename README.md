@@ -133,6 +133,21 @@ docker exec -it id123 bash
 
 to enter the container from which `python manage.py` commands may be launched.
 
+## create email user
+
+from within the smtp container:
+
+```sh
+saslpasswd2 -c -u lycaste.eu "admin" <<< "qwerty" # use actual password instead
+```
+
+## create ssl keys
+
+```sh
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu
+```
+
 ## Database access
 
 The database may be accessed from lycaste.eu/admin, using the right credentials ; or from DBeaver from one of the few IPs that are allowed to access port 5432 in the UFW configuration.
