@@ -37,6 +37,7 @@ services:
       - "25:25"    # SMTP port for server-to-server communication
       - "587:587"  # Submission port for client-to-server communication
     volumes:
+      - /etc/letsencrypt:/etc/letsencrypt           # for ssl keys
       - ./data/smtp/postfix:/var/spool/postfix      # For email messages
       - ./data/smtp/sasldb2:/etc/sasldb2            # For SASL user data
       - ./data/smtp/vmailbox:/etc/postfix/vmailbox  # For virtual mailbox mappings
