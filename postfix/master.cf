@@ -1,0 +1,9 @@
+# Standard SMTP service
+smtp      inet  n       -       y       -       -       smtpd
+
+# Submission service (Port 587 for mail client submission)
+submission inet n       -       y       -       -       smtpd
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject_unauth_destination
