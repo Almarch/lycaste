@@ -10,6 +10,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "8000:8000"
     networks:
       - internal_network
 
@@ -49,6 +50,7 @@ services:
     ports:
       - "25:25"    # SMTP port for server-to-server communication
       - "587:587"  # Submission port for client-to-server communication
+      - "993:993"  # IMAP
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt           # for ssl keys
       - ./data/smtp/postfix:/var/spool/postfix      # For email messages
