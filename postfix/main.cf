@@ -10,7 +10,6 @@ home_mailbox = Maildir/
 
 # TLS settings (ensure you have valid certificates)
 smtpd_use_tls = yes
-smtp_tls_security_level = may
 smtpd_tls_cert_file = /etc/letsencrypt/live/lycaste.eu/fullchain.pem
 smtpd_tls_key_file = /etc/letsencrypt/live/lycaste.eu/privkey.pem
 
@@ -18,6 +17,13 @@ smtpd_tls_key_file = /etc/letsencrypt/live/lycaste.eu/privkey.pem
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_security_options = noanonymous
 broken_sasl_auth_clients = yes
+
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = noanonymous
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_tls_security_options = noanonymous
+smtp_use_tls = yes
+smtp_tls_security_level = may
 
 # SASL settings
 smtpd_sasl_type = dovecot
