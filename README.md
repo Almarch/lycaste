@@ -1,14 +1,5 @@
 # Django config & launch
 
-## Py config
-
-```sh
-python -m venv env
-source env/bin/activate
-pip install django
-pip freeze > requirements.txt
-```
-
 ## Django init
 
 ```sh
@@ -23,7 +14,7 @@ Database creation:
 python manage.py migrate
 ```
 
-This creates db.sqlite3. It can be opened with DBeaver.
+This initializes the db. 
 
 Let's create an application. A web project can be made of several applications.
 
@@ -147,6 +138,11 @@ saslpasswd2 -c -u lycaste.eu "admin" <<< "qwerty" # use actual password instead
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu
 ```
+
+## email access
+
+![image](https://github.com/user-attachments/assets/cfb12ef6-4471-4fdf-ba2e-7efe064c6cc1)
+
 
 ## Database access
 
