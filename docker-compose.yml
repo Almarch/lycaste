@@ -44,7 +44,6 @@ services:
       - internal_network
 
   smtp:
-  mailserver:
     image: tvial/docker-mailserver:latest
     hostname: mail
     domainname: lycaste.eu
