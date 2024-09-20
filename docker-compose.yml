@@ -48,8 +48,8 @@ services:
     hostname: mail
     domainname: lycaste.eu
     volumes:
-      - data/smtp/mail:/var/mail
-      - data/smtp/mail-state:/var/mail-state
+      - ./data/smtp/mail:/var/mail
+      - ./data/smtp/mail-state:/var/mail-state
       - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "25:25"    # SMTP
