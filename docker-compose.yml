@@ -38,10 +38,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    networks:
-      - internal_network
     depends_on:
       - django
+    networks:
+      - internal_network
 
   smtp:
     build: ./postfix  # Build the custom Postfix image from the Dockerfile in the postfix folder
