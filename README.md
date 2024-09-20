@@ -135,8 +135,10 @@ saslpasswd2 -c -u lycaste.eu "admin" <<< "qwerty" # use actual password instead
 ## create ssl keys
 
 ```sh
-sudo apt install certbot python3-certbot-nginx
-sudo certbot --nginx -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu
+sudo apt install snapd
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot certonly --nginx -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu
 ```
 
 ## email access
