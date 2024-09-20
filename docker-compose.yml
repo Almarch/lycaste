@@ -19,8 +19,6 @@ services:
     build: ./lycaste
     volumes:
       - ./data/img:/app/main/static/img
-    expose:
-      - "8000"
     environment:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - POSTGRES_DB=${POSTGRES_DB}
@@ -35,7 +33,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./nginx/nginx.conf /etc/nginx/nginx.conf  # for website config
+      - ./nginx.conf /etc/nginx/nginx.conf  # for website config
       - /etc/letsencrypt:/etc/letsencrypt         # for ssl keys
     ports:
       - "80:80"
