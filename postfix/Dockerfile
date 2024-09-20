@@ -15,4 +15,4 @@ COPY 10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 
 EXPOSE 25 587 993
 
-CMD ["sh", "-c", "service postfix start && service dovecot start && tail -f /dev/null"]
+CMD ["sh", "-c", "postfix start && dovecot -F"]
