@@ -33,7 +33,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./nginx.conf /etc/nginx/nginx.conf  # for website config
+      - ./nginx.conf:/etc/nginx/nginx.conf  # for website config
       - /etc/letsencrypt:/etc/letsencrypt         # for ssl keys
     ports:
       - "80:80"
