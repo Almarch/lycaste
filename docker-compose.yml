@@ -5,7 +5,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./nginx/app:/etc/nginx/sites-enabled/app    # for website config
+      - ./nginx/conf.d:/etc/nginx/conf.d    # for website config
       - /etc/letsencrypt:/etc/letsencrypt           # for ssl keys
     ports:
       - "80:80"
