@@ -49,8 +49,8 @@ services:
     domainname: lycaste.eu
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
-      #- ./data/smtp/postfix:/usr/lib/postfix
-      #- ./data/smtp/dovecot:/etc/dovecot
+      - ./data/smtp/postfix:/usr/lib/postfix
+      - ./data/smtp/dovecot:/etc/dovecot
     ports:
       - "25:25"    # SMTP
       - "143:143"  # IMAP
