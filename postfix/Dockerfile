@@ -4,7 +4,7 @@ FROM debian:latest
 # SMTP build and parameterization
 
 RUN apt-get update && \
-    apt-get install -y postfix sasl2-bin && \
+    apt-get install -y postfix sasl2-bin dovecot-core dovecot-imapd && \
     rm -rf /var/lib/apt/lists/*
 
 COPY main.cf /etc/postfix/main.cf
