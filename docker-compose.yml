@@ -64,7 +64,6 @@ services:
       - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
     cap_add:
       - NET_ADMIN
-    restart: always
 
 networks:
   internal_network:
