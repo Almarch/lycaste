@@ -43,27 +43,29 @@ services:
     networks:
       - internal_network
 
-  smtp:
-    image: tvial/docker-mailserver:latest
-    hostname: mail
-    domainname: lycaste.eu
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - ./data/smtp/postfix:/usr/lib/postfix
-      - ./data/smtp/dovecot:/etc/dovecot
+  mailserver:
+    image: ghcr.io/docker-mailserver/docker-mailserver:latest
+    hostname: mail.lycaste.eu
     ports:
-      - "25:25"    # SMTP
-      - "143:143"  # IMAP
-      - "465:465"  # SMTPS
-      - "587:587"  # Submission
-      - "993:993"  # IMAPS
+      - "25:25"     # SMTP
+      - "465:465"   # SMTPS (SSL)
+      - "587:587"   # Submission (STARTTLS)
+      - "993:993"   # IMAPS (SSL)
+    volumes:
+      - ./docker-data/dms/mail-data/:/var/mail/
+      - ./docker-data/dms/mail-state/:/var/mail-state/
+      - ./docker-data/dms/mail-logs/:/var/log/mail/
+      - ./docker-data/dms/config/:/tmp/docker-mailserver/
+      - /etc/localtime:/etc/localtime:ro
+      - ./letsencrypt/:/etc/letsencrypt:ro
     environment:
-      - SSL_TYPE=manual
-      - SSL_CERT_PATH=/etc/letsencrypt/live/lycaste.eu/fullchain.pem
-      - SSL_KEY_PATH=/etc/letsencrypt/live/lycaste.eu/privkey.pem
       - ENABLE_SPAMASSASSIN=1
       - ENABLE_CLAMAV=1
       - ENABLE_FAIL2BAN=1
+      - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
+    cap_add:
+      - NET_ADMIN
+    restart: always
 
 networks:
   internal_network:
