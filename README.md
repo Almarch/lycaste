@@ -144,8 +144,9 @@ sudo certbot certonly --nginx -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu
 
 ## email access
 
-![image](https://github.com/user-attachments/assets/cfb12ef6-4471-4fdf-ba2e-7efe064c6cc1)
+New mailbox on thunderbird :
 
+![image](https://github.com/user-attachments/assets/b1b00727-ffe9-4986-a4cb-ccdd5a1f7537)
 
 ## Database access
 
