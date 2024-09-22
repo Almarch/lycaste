@@ -56,7 +56,7 @@ services:
       - ./data/mailserver/mail-state/:/var/mail-state/
       - ./data/mailserver/mail-logs/:/var/log/mail/
       - ./data/mailserver/config/:/tmp/docker-mailserver/
-      - ./letsencrypt/:/etc/letsencrypt:ro
+      - /etc/letsencrypt/:/etc/letsencrypt:ro
     environment:
       - ENABLE_SPAMASSASSIN=1
       - ENABLE_CLAMAV=1
