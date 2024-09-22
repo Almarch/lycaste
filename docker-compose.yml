@@ -43,27 +43,28 @@ services:
     networks:
       - internal_network
 
-  #mailserver:
-  #  image: ghcr.io/docker-mailserver/docker-mailserver:latest
-  #  hostname: mail.lycaste.eu
-  #  ports:
-  #    - "25:25"     # SMTP
-  #    - "465:465"   # SMTPS (SSL)
-  #    - "587:587"   # Submission (STARTTLS)
-  #    - "993:993"   # IMAPS (SSL)
-  #  volumes:
-  #    - ./data/mailserver/mail-data/:/var/mail/
-  #    - ./data/mailserver/mail-state/:/var/mail-state/
-  #    - ./data/mailserver/mail-logs/:/var/log/mail/
-  #    - ./data/mailserver/config/:/tmp/docker-mailserver/
-  #    - /etc/letsencrypt/:/etc/letsencrypt:ro
-  #  environment:
-  #    - ENABLE_SPAMASSASSIN=1
-  #    - ENABLE_CLAMAV=1
-  #    - ENABLE_FAIL2BAN=1
-  #    - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
-  #  cap_add:
-  #    - NET_ADMIN
+  mailserver:
+   image: ghcr.io/docker-mailserver/docker-mailserver:latest
+   hostname: mail.lycaste.eu
+   ports:
+     - "25:25"     # SMTP
+     - "465:465"   # SMTPS (SSL)
+     - "587:587"   # Submission (STARTTLS)
+     - "993:993"   # IMAPS (SSL)
+   volumes:
+     - ./data/mailserver/mail-data/:/var/mail/
+     - ./data/mailserver/mail-state/:/var/mail-state/
+     - ./data/mailserver/mail-logs/:/var/log/mail/
+     - ./data/mailserver/config/:/tmp/docker-mailserver/
+     - /etc/letsencrypt/:/etc/letsencrypt:ro
+     - /etc/localtime:/etc/localtime:ro
+   environment:
+     - ENABLE_SPAMASSASSIN=1
+     - ENABLE_CLAMAV=1
+     - ENABLE_FAIL2BAN=1
+     - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
+   cap_add:
+     - NET_ADMIN
 
 networks:
   internal_network:
