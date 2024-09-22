@@ -129,8 +129,8 @@ to enter the container from which `python manage.py` commands may be launched.
 from within the smtp container:
 
 ```sh
-saslpasswd2 -c -u lycaste.eu admin <<< qwerty # use actual password instead
-sasldblistusers2
+docker-compose exec mailserver setup email add user@lycaste.eu
+docker-compose exec mailserver setup email list
 ```
 
 ## create ssl keys
