@@ -19,6 +19,8 @@ services:
     build: ./lycaste
     volumes:
       - ./data/img:/app/main/static/img
+      - ./data/migrations/main:/app/main/migrations
+      - ./data/migrations/authentication:/app/authentication/migrations
     environment:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - POSTGRES_DB=${POSTGRES_DB}
