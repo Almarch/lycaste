@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Taxon(models.Model):
+
+    def __str__(self):
+        return f'{self.name}'
+
     name  = models.fields.CharField(null=False, max_length=100)
     supra = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='offspring')
     photo = models.fields.CharField(null=True)
