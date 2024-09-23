@@ -16,6 +16,7 @@ class Taxon(models.Model):
     
 class Genotype(models.Model):
     name = models.fields.CharField(null=True, max_length=100)
+    taxon = models.ForeignKey(Taxon, related_name='all_genotypes', null=True, on_delete=models.SET_NULL)
     cross = models.ForeignKey('Cross', related_name='siblings', null=True, on_delete=models.SET_NULL)
     location = models.fields.CharField(null=True, max_length=255)
     photo = models.fields.CharField(null=True)
