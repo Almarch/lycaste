@@ -133,6 +133,8 @@ docker-compose exec mailserver setup email add user@lycaste.eu
 docker-compose exec mailserver setup email list
 ```
 
+It is important to well parameterize the SPF so that the mails are not red-flagged (see [OVH documentation](https://help.ovhcloud.com/csm/fr-dns-spf-record?id=kb_article_view&sysparm_article=KB0051712)) ; and to make sure the domain links to the IP with no competition with for instance OVH mail hosting services.
+
 ## create ssl keys
 
 ```sh
@@ -141,6 +143,8 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot certonly --nginx -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu
 ```
+
+These keys are then placed into /etc/letsencrypt. They are used by nginx and the mailserver.
 
 ## email access
 
