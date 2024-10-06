@@ -33,7 +33,7 @@ def taxon_detail(request, lang, name):
         }
     )
 
-def taxon_create(request):
+def taxon_create(request, lang):
     if request.method == 'POST':
         form = TaxonForm(request.POST)
         if form.is_valid():
@@ -52,7 +52,7 @@ def taxon_create(request):
         }
     )
 
-def taxon_update(request, name):
+def taxon_update(request, lang, name):
     taxon = Taxon.objects.get(name=name)
 
     if request.method == 'POST':
