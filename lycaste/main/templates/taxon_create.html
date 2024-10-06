@@ -1,0 +1,13 @@
+{% extends 'fr_base.html' %}
+{% block content %}
+{% load static %}
+
+ <h1>{{ title }}</h1>
+
+<form action="" method="post">
+  {% csrf_token %} <!-- https://docs.djangoproject.com/fr/3.2/ref/csrf/ -->
+  {{ form.as_p }}
+  <input type="submit" value="Save">
+</form>
+
+{% endblock %}

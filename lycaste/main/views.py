@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from main.models import Taxon, Genotype, Cross
-
-# Create your views here.
+from main.models import Taxon
+from main.forms import TaxonForm
 
 def redirect(request):
     return render(request,'redirect.html')
@@ -31,5 +30,44 @@ def taxon_detail(request, lang, name):
         'fr_taxon_detail.html', {
             'lang': lang,
             'taxon': taxon,
+        }
+    )
+
+def taxon_create(request):
+    if request.method == 'POST':
+        form = TaxonForm(request.POST)
+        if form.is_valid():
+            taxon = form.save()
+            return redirect('taxon-detail', taxon.name)
+
+    else:
+        form = TaxonForm()
+
+    return render(
+        request,
+        'taxon_create.html',
+        {
+            'title': 'New taxon',
+            'form': form,
+        }
+    )
+
+def taxon_update(request, name):
+    taxon = Taxon.objects.get(name=name)
+
+    if request.method == 'POST':
+        form = TaxonForm(request.POST, instance=taxon)
+        if form.is_valid():
+            form.save()
+            return redirect('taxon-detail', taxon.name)
+    else:
+        form = TaxonForm(instance=taxon)
+
+    return render(
+        request,
+        'taxon_create.html',
+        {
+            'title': 'Update Taxon',
+            'form': form,
         }
     )

@@ -23,5 +23,7 @@ urlpatterns = [
     path('', views.redirect),
     path('lang-<str:lang>/', views.welcome, name = "welcome"),
     path('lang-<str:lang>/taxa/', views.taxon_list, name = "taxon-list"),
-    path('lang-<str:lang>/taxa/<str:name>/', views.taxon_detail, name = "taxon-detail"),
+    path('lang-<str:lang>/taxa/create/', views.taxon_detail, name = "taxon-create"),
+    path('lang-<str:lang>/taxa-<str:name>/', views.taxon_detail, name = "taxon-detail"),
+    path('lang-<str:lang>/taxa-<str:name>/edit/', views.taxon_detail, name = "taxon-edit"),
 ]
