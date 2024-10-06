@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang=”fr”>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Orchidées emblématiques du Guatemala</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="shortcut icon" href="{% static 'icon.png' %}" type="image/png">
+    </head>
+
+    <body>
+
+        {% block content %}{% endblock %}
+
+    </body>
+
+    <nav>
+        <p class ="nav">
+            Accueil
+        </p>
+        <p class ="nav">
+            Qui sommes-nous ?
+        </p>
+        <p class ="nav">
+            Contact
+        </p>
+        <p class ="nav">
+            Langue
+        </p>
+    </nav>
+
+    <footer>
+    </footer>
+
+</body>
+
+</html>

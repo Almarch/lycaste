@@ -1,0 +1,13 @@
+{% extends 'base_fr.html' %}
+{% block content %}
+
+<h1>Liste des taxa:</h1>
+<p>
+    <ul>
+    {% for taxon in taxons %}
+        <li><a href="{% url 'taxon-detail' taxon.name %}">{{ taxon.name }}</a></li>
+    {% endfor %}
+    </ul>
+</p>
+
+{% endblock content %}
