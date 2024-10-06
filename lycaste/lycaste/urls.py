@@ -25,6 +25,6 @@ urlpatterns = [
     path('lang/<str:lang>/', views.welcome, lang = 'lang'),
 
     path('lang/<str:lang>/taxon/', views.taxon_list, lang = 'lang'),
-    path('lang/<str:lang>/taxon/<str:name>/', views.taxon_detail, lang = 'lang', name='taxon'),
+    path('lang/<str:lang>/taxon/<str:name>/', views.taxon_detail, lang = 'lang', name='name'),
 
 ]
