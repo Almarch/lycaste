@@ -33,7 +33,7 @@ def taxon_detail(request, lang, name):
         }
     )
 
-def taxon_create(request, lang):
+def taxon_new(request, lang):
     if request.method == 'POST':
         form = TaxonForm(request.POST)
         if form.is_valid():
@@ -45,14 +45,14 @@ def taxon_create(request, lang):
 
     return render(
         request,
-        'taxon_create.html',
+        'taxon_update.html',
         {
             'title': 'New taxon',
             'form': form,
         }
     )
 
-def taxon_update(request, lang, name):
+def taxon_edit(request, lang, name):
     taxon = Taxon.objects.get(name=name)
 
     if request.method == 'POST':
@@ -65,7 +65,7 @@ def taxon_update(request, lang, name):
 
     return render(
         request,
-        'taxon_create.html',
+        'taxon_update.html',
         {
             'title': 'Update Taxon',
             'form': form,
