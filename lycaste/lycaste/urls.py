@@ -21,7 +21,7 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.redirect),
-    path('lang/<str:lang>/', views.welcome, name = "welcome"),
-    path('lang/<str:lang>/taxon/', views.taxon_list, name = "taxon-list"),
-    path('lang/<str:lang>/taxon/<str:name>/', views.taxon_detail, name = "taxon-detail"),
+    path('lang-<str:lang>/', views.welcome, name = "welcome"),
+    path('lang-<str:lang>/taxa/', views.taxon_list, name = "taxon-list"),
+    path('lang-<str:lang>/taxa/<str:name>/', views.taxon_detail, name = "taxon-detail"),
 ]
