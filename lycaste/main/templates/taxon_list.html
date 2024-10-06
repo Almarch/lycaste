@@ -5,7 +5,7 @@
 <p>
     <ul>
     {% for taxon in taxons %}
-        <li><a href="{% url 'taxon-detail' taxon.name %}">{{ taxon.name }}</a></li>
+        <li><a href="{% url 'taxon-detail' 'fr' taxon.name %}">{{ taxon.name }}</a></li>
     {% endfor %}
     </ul>
 </p>
