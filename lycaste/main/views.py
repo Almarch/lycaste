@@ -15,12 +15,12 @@ def welcome(request,lang):
     )
 
 def taxon_list(request, lang):
-    taxa = Taxon.objects.all()
+    taxons = Taxon.objects.all()
     return render(
         request,
         'taxon_list.html', {
             'lang': lang,
-            'bands': taxa
+            'taxons': taxons,
         }
     )
 
