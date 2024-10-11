@@ -2,7 +2,13 @@
 {% block content %}
 {% load static %}
 
-<p>{{ taxon.description_fr }}</p>
+<h1>
+    {{ taxon.title_fr }}
+</h1>
+
+<p>
+    {{ taxon.description_fr }}
+</p>
 
 <p><a href="{% url 'taxon-edit' 'fr' taxon.name %}">Edit</a></p>
 

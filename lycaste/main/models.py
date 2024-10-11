@@ -10,9 +10,14 @@ class Taxon(models.Model):
     name  = models.fields.CharField(null=False, max_length=100)
     supra = models.ForeignKey('self', related_name='infra', null=True, blank=True, on_delete=models.SET_NULL)
     photo = models.fields.CharField(null=True)
-    description_fr = models.fields.CharField(null=True)
-    description_es = models.fields.CharField(null=True)
-    description_en = models.fields.CharField(null=True)
+
+    title_fr = models.fields.CharField(null=True)
+    title_es = models.fields.CharField(null=True)
+    title_en = models.fields.CharField(null=True)
+
+    description_fr = models.fields.TextField(null=True)
+    description_es = models.fields.TextField(null=True)
+    description_en = models.fields.TextField(null=True)
     
 class Genotype(models.Model):
     name = models.fields.CharField(null=True, max_length=100)
@@ -20,9 +25,14 @@ class Genotype(models.Model):
     cross = models.ForeignKey('Cross', related_name='siblings', null=True, on_delete=models.SET_NULL)
     location = models.fields.CharField(null=True, max_length=255)
     photo = models.fields.CharField(null=True)
-    description_fr = models.fields.CharField(null=True)
-    description_es = models.fields.CharField(null=True)
-    description_en = models.fields.CharField(null=True)
+
+    title_fr = models.fields.CharField(null=True, max_length=255)
+    title_es = models.fields.CharField(null=True, max_length=255)
+    title_en = models.fields.CharField(null=True, max_length=255)
+
+    description_fr = models.fields.TextField(null=True)
+    description_es = models.fields.TextField(null=True)
+    description_en = models.fields.TextField(null=True)
 
 class Cross(models.Model):
     mother = models.ForeignKey(Genotype, related_name='offspring_as_mother', null=True, on_delete=models.SET_NULL)
@@ -36,9 +46,23 @@ class Event(models.Model):
     date        = models.fields.DateField(null=False)
     country     = models.fields.CharField(null=False, max_length=50)
     city        = models.fields.CharField(null=False, max_length=50)
-    description = models.fields.CharField(null=True, max_length=255)
+
+    title_fr = models.fields.CharField(null=True, max_length=255)
+    title_es = models.fields.CharField(null=True, max_length=255)
+    title_en = models.fields.CharField(null=True, max_length=255)
+
+    description_fr = models.fields.TextField(null=True)
+    description_es = models.fields.TextField(null=True)
+    description_en = models.fields.TextField(null=True)
 
 class Distinction(models.Model):
     genotype = models.ForeignKey(Genotype, related_name='all_prices', null=True, on_delete=models.SET_NULL)
     event    = models.ForeignKey(Event,    related_name='all_prices', null=True, on_delete=models.SET_NULL)
-    description = models.fields.CharField(null=True, max_length=255)
+
+    title_fr = models.fields.CharField(null=True, max_length=255)
+    title_es = models.fields.CharField(null=True, max_length=255)
+    title_en = models.fields.CharField(null=True, max_length=255)
+
+    description_fr = models.fields.TextField(null=True)
+    description_es = models.fields.TextField(null=True)
+    description_en = models.fields.TextField(null=True)
