@@ -20,7 +20,7 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.redirect),
+    path('', views.first_step),
     path('lang-<str:lang>/', views.welcome, name = "welcome"),
     path('lang-<str:lang>/taxa/', views.taxon_list, name = "taxon-list"),
     path('lang-<str:lang>/taxa/add/', views.taxon_new, name = "taxon-new"),

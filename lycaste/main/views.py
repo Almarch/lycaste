@@ -2,8 +2,8 @@ from django.shortcuts import render
 from main.models import Taxon
 from main.forms import TaxonForm
 
-def redirect(request):
-    return render(request,'redirect.html')
+def first_step(request):
+    return render(request,'first_step.html')
 
 def welcome(request,lang):
     return render(
