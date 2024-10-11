@@ -38,7 +38,7 @@ def taxon_new(request, lang):
         form = TaxonForm(request.POST)
         if form.is_valid():
             taxon = form.save()
-            return redirect('taxon-detail', lang, taxon.name)
+            return redirect('taxon-detail', lang = lang, name = taxon.name)
 
     else:
         form = TaxonForm()
@@ -59,7 +59,7 @@ def taxon_edit(request, lang, name):
         form = TaxonForm(request.POST, instance=taxon)
         if form.is_valid():
             form.save()
-            return redirect('taxon-detail', lang, taxon.name)
+            return redirect('taxon-detail', lang = lang, name = taxon.name)
     else:
         form = TaxonForm(instance=taxon)
 
