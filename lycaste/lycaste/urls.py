@@ -19,11 +19,11 @@ from django.urls import path
 from main import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('en/admin/', admin.site.urls, name = "admin"),
     path('', views.first_step),
-    path('lang-<str:lang>/', views.welcome, name = "welcome"),
-    path('lang-<str:lang>/taxa/', views.taxon_list, name = "taxon-list"),
-    path('lang-<str:lang>/taxa/add/', views.taxon_new, name = "taxon-new"),
-    path('lang-<str:lang>/taxa-<str:name>/', views.taxon_detail, name = "taxon-detail"),
-    path('lang-<str:lang>/taxa-<str:name>/edit/', views.taxon_edit, name = "taxon-edit"),
+    path('<str:lang>/', views.welcome, name = "welcome"),
+    path('<str:lang>/taxa/', views.taxon_list, name = "taxon-list"),
+    path('<str:lang>/taxa-add/', views.taxon_new, name = "taxon-new"),
+    path('<str:lang>/taxa/<str:name>/', views.taxon_detail, name = "taxon-detail"),
+    path('<str:lang>/taxa/<str:name>/edit/', views.taxon_edit, name = "taxon-edit"),
 ]
