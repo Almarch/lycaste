@@ -40,7 +40,6 @@ services:
 
   webserver:
     image: nginx:latest
-    restart: always
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf  # for website config
       - ./data/certbot/www:/var/www/certbot/:ro
