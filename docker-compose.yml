@@ -38,20 +38,28 @@ services:
       - ./data/certbot/www/:/var/www/certbot/:rw
       - ./data/certbot/conf/:/etc/letsencrypt/:rw
 
-  webserver:
-    image: nginx:latest
+  wordpressdb:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: wp
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf  # for website config
-      - ./data/certbot/www:/var/www/certbot/:ro
-      - ./data/certbot/conf/:/etc/nginx/ssl/:ro
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - django
-      - wordpress
+      - ./data/wordpress/db:/var/lib/mysql
     networks:
       - internal_network
+      
+  wordpress:
+    image: wordpress:latest
+    environment:
+      WORDPRESS_DB_HOST: wp-db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ""
+      WORDPRESS_DB_NAME: wp
+    volumes:
+      - ./data/wordpress/content:/var/www/html/wp-content
+    depends_on:
+      - wordpressdb
 
   mailserver:
     image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
@@ -76,27 +84,22 @@ services:
       - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
     cap_add:
       - NET_ADMIN
-     
-  wordpressdb:
-    image: mysql:5.7
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_ROOT_PASSWORD: ""
-      MYSQL_DATABASE: wp
-    volumes:
-      - ./data/wordpress/db:/var/lib/mysql
 
-  wordpress:
-    image: wordpress:latest
-    environment:
-      WORDPRESS_DB_HOST: wp-db:3306
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: ""
-      WORDPRESS_DB_NAME: wp
+  webserver:
+    image: nginx:latest
     volumes:
-      - ./data/wordpress/content:/var/www/html/wp-content
+      - ./nginx.conf:/etc/nginx/nginx.conf  # for website config
+      - ./data/certbot/www:/var/www/certbot/:ro
+      - ./data/certbot/conf/:/etc/nginx/ssl/:ro
+    ports:
+      - "80:80"
+      - "443:443"
     depends_on:
-      - wordpressdb
+      - django
+      - wordpress
+    networks:
+      - internal_network
+
 networks:
   internal_network:
       driver: bridge
