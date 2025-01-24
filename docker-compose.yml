@@ -89,7 +89,6 @@ services:
 
   wordpress:
     image: wordpress:latest
-    command: php-fpm
     environment:
       WORDPRESS_DB_HOST: wp-db:3306
       WORDPRESS_DB_USER: root
