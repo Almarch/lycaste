@@ -46,7 +46,7 @@ services:
       - internal_network
 
   mailserver:
-   image: ghcr.io/docker-mailserver/docker-mailserver:latest
+   image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
    hostname: mail.lycaste.eu
    ports:
      - "25:25"     # SMTP
