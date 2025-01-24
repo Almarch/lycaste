@@ -77,7 +77,7 @@ services:
     cap_add:
       - NET_ADMIN
      
-  wpdb:
+  wordpressdb:
     image: mysql:5.7
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
@@ -96,8 +96,7 @@ services:
     volumes:
       - ./data/wordpress/content:/var/www/html/wp-content
     depends_on:
-      - wpdb
-
+      - wordpressdb
 networks:
   internal_network:
       driver: bridge
