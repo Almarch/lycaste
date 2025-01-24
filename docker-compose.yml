@@ -54,29 +54,38 @@ services:
       - internal_network
 
   mailserver:
-   image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
-   hostname: mail.lycaste.eu
-   ports:
-     - "25:25"     # SMTP
-     - "465:465"   # SMTPS (SSL)
-     - "587:587"   # Submission (STARTTLS)
-     - "993:993"   # IMAPS (SSL)
-   volumes:
-     - ./data/mailserver/mail-data/:/var/mail/
-     - ./data/mailserver/mail-state/:/var/mail-state/
-     - ./data/mailserver/mail-logs/:/var/log/mail/
-     - ./data/mailserver/config/:/tmp/docker-mailserver/
-     - /etc/letsencrypt/:/etc/letsencrypt:ro
-     - /etc/localtime:/etc/localtime:ro
-   environment:
-     - ENABLE_SPAMASSASSIN=0
-     - ENABLE_CLAMAV=0
-     - ENABLE_FAIL2BAN=0
-     - ENABLE_AMAVIS=0
-     - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
-   cap_add:
-     - NET_ADMIN
+    image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
+    hostname: mail.lycaste.eu
+    ports:
+      - "25:25"     # SMTP
+      - "465:465"   # SMTPS (SSL)
+      - "587:587"   # Submission (STARTTLS)
+      - "993:993"   # IMAPS (SSL)
+    volumes:
+      - ./data/mailserver/mail-data/:/var/mail/
+      - ./data/mailserver/mail-state/:/var/mail-state/
+      - ./data/mailserver/mail-logs/:/var/log/mail/
+      - ./data/mailserver/config/:/tmp/docker-mailserver/
+      - /etc/letsencrypt/:/etc/letsencrypt:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - ENABLE_SPAMASSASSIN=0
+      - ENABLE_CLAMAV=0
+      - ENABLE_FAIL2BAN=0
+      - ENABLE_AMAVIS=0
+      - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
+    cap_add:
+      - NET_ADMIN
      
+  wp-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: wp
+    volumes:
+      - ./data/wordpress/db:/var/lib/mysql
+
   wordpress:
     image: wordpress:latest
     environment:
@@ -86,15 +95,8 @@ services:
       WORDPRESS_DB_NAME: wp
     volumes:
       - ./data/wordpress/content:/var/www/html/wp-content
-
-  wp-db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_ROOT_PASSWORD: ""
-      MYSQL_DATABASE: wp
-    volumes:
-      - ./data/wordpress/db:/var/lib/mysql
+    depends_on:
+      - wp-db
 
 networks:
   internal_network:
