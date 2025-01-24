@@ -65,7 +65,7 @@ mkdir data/mailserver/mail-logs
 mkdir data/mailserver/config
 mkdir data/certbot
 mkdir data/certbot/www
-mkdir data/certbot/
+mkdir data/certbot/conf
 mkdir data/wordpress
 mkdir data/wordpress/db
 mkdir data/wordpress/content
