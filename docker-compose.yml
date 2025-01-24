@@ -46,6 +46,8 @@ services:
       MYSQL_DATABASE: wp
     volumes:
       - ./data/wordpress/db:/var/lib/mysql
+    networks:
+      - internal_network
 
   wordpress:
     image: wordpress:latest
