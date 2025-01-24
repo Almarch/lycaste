@@ -108,10 +108,10 @@ It is important to well parameterize the SPF so that the mails are not red-flagg
 
 ## create ssl keys
 
-In order to generate the keys, all ports must be open from ufw. Then use the dedicated service:
+In order to generate the keys, use the dedicated service:
 
 ```sh
-docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu
+docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu --force-renewal
 ```
 
 ## email access
