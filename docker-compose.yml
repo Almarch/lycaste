@@ -64,6 +64,7 @@ services:
      - ENABLE_SPAMASSASSIN=0
      - ENABLE_CLAMAV=0
      - ENABLE_FAIL2BAN=0
+     - ENABLE_AMAVIS=0
      - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
    cap_add:
      - NET_ADMIN
