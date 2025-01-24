@@ -19,7 +19,7 @@ from django.urls import path
 from main import views
 
 urlpatterns = [
-    path('en/admin/', admin.site.urls, name = "admin"),
+    path('admin/', admin.site.urls, name = "admin"),
     path('', views.first_step),
     path('<str:lang>/', views.welcome, name = "welcome"),
     path('<str:lang>/taxa/', views.taxon_list, name = "taxon-list"),
