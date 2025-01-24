@@ -85,7 +85,7 @@ services:
       WORDPRESS_DB_PASSWORD: ""
       WORDPRESS_DB_NAME: wp
     volumes:
-      - ./data/worpress/content:/var/www/html/wp-content
+      - ./data/wordpress/content:/var/www/html/wp-content
 
   wp-db:
     image: mysql:5.7
@@ -94,7 +94,7 @@ services:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_DATABASE: wp
     volumes:
-      - ./data/worpress/db:/var/lib/mysql
+      - ./data/wordpress/db:/var/lib/mysql
 
 networks:
   internal_network:

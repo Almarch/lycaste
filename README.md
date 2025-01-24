@@ -72,7 +72,7 @@ mkdir data/wordpress/content
 sudo chmod -R 755 data
 ```
 
-These files need to be manually added & updated to the VPS environment.
+These files need to be manually added to the VPS environment.
 
 The app is built & launched using:
 
