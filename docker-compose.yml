@@ -46,9 +46,7 @@ services:
       MYSQL_DATABASE: wp
     volumes:
       - ./data/wordpress/db:/var/lib/mysql
-    networks:
-      - internal_network
-      
+
   wordpress:
     image: wordpress:latest
     environment:
@@ -60,7 +58,9 @@ services:
       - ./data/wordpress/content:/var/www/html/wp-content
     depends_on:
       - wordpressdb
-
+    networks:
+      - internal_network
+      
   mailserver:
     image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
     hostname: mail.lycaste.eu
@@ -99,7 +99,7 @@ services:
       - wordpress
     networks:
       - internal_network
-
+      
 networks:
   internal_network:
       driver: bridge
