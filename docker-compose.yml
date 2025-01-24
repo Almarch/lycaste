@@ -76,6 +76,25 @@ services:
      - SSL_TYPE=letsencrypt # Tell docker-mailserver to use Let's Encrypt certificates
    cap_add:
      - NET_ADMIN
+     
+  wordpress:
+    image: wordpress:latest
+    environment:
+      WORDPRESS_DB_HOST: wp-db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ""
+      WORDPRESS_DB_NAME: wp
+    volumes:
+      - ./data/worpress/content:/var/www/html/wp-content
+
+  wp-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: wp
+    volumes:
+      - ./data/worpress/db:/var/lib/mysql
 
 networks:
   internal_network:

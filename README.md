@@ -63,6 +63,12 @@ mkdir data/mailserver/mail-data
 mkdir data/mailserver/mail-state
 mkdir data/mailserver/mail-logs
 mkdir data/mailserver/config
+mkdir data/certbot
+mkdir data/certbot/www
+mkdir data/certbot/
+mkdir data/wordpress
+mkdir data/wordpress/db
+mkdir data/wordpress/content
 sudo chmod -R 755 data
 ```
 
@@ -102,20 +108,21 @@ It is important to well parameterize the SPF so that the mails are not red-flagg
 
 ## create ssl keys
 
-```sh
-sudo apt install snapd
-sudo snap install --classic certbot
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
-sudo certbot certonly --nginx -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d dev.lycaste.eu
-```
+In order to generate the keys, all ports must be open from ufw. Then use the dedicated service:
 
-These keys are then placed into /etc/letsencrypt. They are used by nginx and the mailserver.
+```sh
+docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu
+```
 
 ## email access
 
 New mailbox on thunderbird :
 
 ![image](https://github.com/user-attachments/assets/b1b00727-ffe9-4986-a4cb-ccdd5a1f7537)
+
+## Wordpress
+
+A wordpress image is also used in order to support the website design, at the adress draft.lycaste.eu. It is behind ufw and only a few IPs have access to it.
 
 ## Database access
 
