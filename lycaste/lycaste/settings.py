@@ -34,12 +34,14 @@ ALLOWED_HOSTS = [
     'lycaste.eu',
     'www.lycaste.eu',
     'dev.lycaste.eu',
+    os.getenv("SERVER_IP"),
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://lycaste.eu',
     'https://www.lycaste.eu',
     'https://dev.lycaste.eu',
+    os.getenv("SERVER_IP"),
 ]
 
 # Application definition

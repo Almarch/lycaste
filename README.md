@@ -41,6 +41,7 @@ POSTGRES_DB=db_prod
 POSTGRES_USER=admin
 POSTGRES_PASSWORD=123
 DJANGO_SECRET_KEY=abc
+SERVER_IP=111.222.333.444
 ```
 
 And a symlink to the right docker-compose is made such as:
