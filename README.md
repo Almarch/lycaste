@@ -43,16 +43,10 @@ POSTGRES_PASSWORD=123
 DJANGO_SECRET_KEY=abc
 ```
 
-And a symlink to the right docker-compose is made using either:
+And a symlink to the right docker-compose is made such as:
 
 ```sh
-ln -sf docker-compose-prod.yml docker-compose.yml
-```
-
-or
-
-```sh
-ln -sf docker-compose-prod.yml docker-compose.yml
+ln -s docker-compose.prod.yml docker-compose.yml
 ```
 
 - data which is made as such:

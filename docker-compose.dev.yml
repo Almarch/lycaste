@@ -11,7 +11,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
-      - "4321:4321"
+      - "5433:5432"
     networks:
       - dev_network
 
@@ -27,6 +27,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_HOST=db
+      - POSTGRES_PORT=5433
     depends_on:
       - db
     networks:
