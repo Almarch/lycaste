@@ -30,7 +30,16 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'lycaste.eu', 'www.lycaste.eu', 'dev.lycaste.eu']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '127.0.0.1:8000',
+    'localhost',
+    'localhost:8000',
+    'lycaste.eu',
+    'www.lycaste.eu',
+    'dev.lycaste.eu',
+]
+
 CSRF_TRUSTED_ORIGINS = [
     'https://lycaste.eu',
     'https://www.lycaste.eu',
