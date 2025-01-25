@@ -31,10 +31,6 @@ if not SECRET_KEY:
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    '127.0.0.1:8000',
-    'localhost',
-    'localhost:8000',
     'lycaste.eu',
     'www.lycaste.eu',
     'dev.lycaste.eu',
@@ -44,7 +40,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://lycaste.eu',
     'https://www.lycaste.eu',
     'https://dev.lycaste.eu',
-    'http://localhost:8000',
 ]
 
 # Application definition

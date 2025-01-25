@@ -14,7 +14,7 @@ services:
     ports:
       - "5433:5432"
     networks:
-      - internal_network_dev
+      - internal_network
 
   django_dev:
     build: ./lycaste
@@ -32,11 +32,9 @@ services:
       - POSTGRES_PORT=5432
     depends_on:
       - db_dev
-    ports:
-      - "8000:80"
     networks:
-      - internal_network_dev
+      - internal_network
       
 networks:
-  internal_network_dev:
+  internal_network:
       driver: bridge
