@@ -32,20 +32,8 @@ services:
       - POSTGRES_PORT=5432
     depends_on:
       - db_dev
-    networks:
-      - internal_network_dev
-
-  webserver_dev:
-    image: nginx:latest
-    restart: always
-    volumes:
-      - ./nginx_dev.conf:/etc/nginx/nginx.conf
-      - ./data/certbot/www:/var/www/certbot/:ro
-      - ./data/certbot/conf/:/etc/nginx/ssl/:ro
     ports:
-      - "8000:8000"
-    depends_on:
-      - django_dev
+      - "8000:80"
     networks:
       - internal_network_dev
       
