@@ -4,6 +4,7 @@ services:
 
   db:
     image: postgres:13
+    restart: always
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
@@ -17,6 +18,7 @@ services:
 
   django:
     build: ./lycaste
+    restart: always
     volumes:
       - ./data/img:/app/main/static/img
       - ./data/migrations/main:/app/main/migrations
@@ -35,6 +37,7 @@ services:
 
   webserver:
     image: nginx:latest
+    restart: always
     volumes:
       - ./nginx_dev.conf:/etc/nginx/nginx.conf
       - ./data/certbot/conf/:/etc/nginx/ssl/:ro

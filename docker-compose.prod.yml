@@ -4,6 +4,7 @@ services:
 
   db:
     image: postgres:13
+    restart: always
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
@@ -17,6 +18,7 @@ services:
 
   django:
     build: ./lycaste
+    restart: always
     volumes:
       - ./data/img:/app/main/static/img
       - ./data/migrations/main:/app/main/migrations
@@ -41,6 +43,7 @@ services:
 
   wordpressdb:
     image: mysql:5.7
+    restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_ROOT_PASSWORD: ""
@@ -52,6 +55,7 @@ services:
 
   wordpress:
     image: wordpress:latest
+    restart: always
     environment:
       WORDPRESS_DB_HOST: wordpressdb:3306
       WORDPRESS_DB_USER: root
@@ -66,6 +70,7 @@ services:
 
   mailserver:
     image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
+    restart: always
     hostname: mail.lycaste.eu
     ports:
       - "25:25"     # SMTP
@@ -90,6 +95,7 @@ services:
 
   webserver:
     image: nginx:latest
+    restart: always
     volumes:
       - ./nginx_prod.conf:/etc/nginx/nginx.conf
       - ./data/certbot/www:/var/www/certbot/:ro
