@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres:13
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "4321:4321"
+    networks:
+      - dev_network
+
+  django:
+    build: ./lycaste
+    volumes:
+      - ./data/img:/app/main/static/img
+      - ./data/migrations/main:/app/main/migrations
+      - ./data/migrations/authentication:/app/authentication/migrations
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=db
+    depends_on:
+      - db
+    networks:
+      - dev_network
+
+  webserver:
+    image: nginx:latest
+    volumes:
+      - ./nginx_dev.conf:/etc/nginx/nginx.conf
+      - ./data/certbot/conf/:/etc/nginx/ssl/:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      - django
+    networks:
+      - dev_network
+      
+networks:
+  dev_network:
+      driver: bridge

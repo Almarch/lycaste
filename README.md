@@ -37,13 +37,22 @@ The project is dockerized using docker-compose.
 
 ```sh
 ENVIRONMENT=prod
-DEV_REPLICAS=0
-PROD_REPLICAS=1
 POSTGRES_DB=db_prod
 POSTGRES_USER=admin
 POSTGRES_PASSWORD=123
 DJANGO_SECRET_KEY=abc
-POSTGRES_PORT_MAPPING="123:123"
+```
+
+And a symlink to the right docker-compose is made using either:
+
+```sh
+ln -sf docker-compose-prod.yml docker-compose.yml
+```
+
+or
+
+```sh
+ln -sf docker-compose-prod.yml docker-compose.yml
 ```
 
 - data which is made as such:
