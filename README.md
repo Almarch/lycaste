@@ -104,7 +104,7 @@ It is important to well parameterize the SPF so that the mails are not red-flagg
 In order to generate the keys, use the dedicated service:
 
 ```sh
-docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu -d admin.lycaste.eu --force-renewal
+docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu --force-renewal
 ```
 
 ## email access
