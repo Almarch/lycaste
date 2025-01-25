@@ -37,6 +37,8 @@ The project is dockerized using docker-compose.
 
 ```sh
 ENVIRONMENT=prod
+DEV_REPLICAS=0
+PROD_REPLICAS=1
 POSTGRES_DB=db_prod
 POSTGRES_USER=admin
 POSTGRES_PASSWORD=123
