@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
 
-  db:
+  db_dev:
     image: postgres:13
     restart: always
     volumes:
@@ -16,7 +16,7 @@ services:
     networks:
       - dev_network
 
-  django:
+  django_dev:
     build: ./lycaste
     restart: always
     volumes:
@@ -35,7 +35,7 @@ services:
     networks:
       - dev_network
 
-  webserver:
+  webserver_dev:
     image: nginx:latest
     restart: always
     volumes:
