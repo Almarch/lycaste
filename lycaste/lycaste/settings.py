@@ -41,7 +41,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://lycaste.eu',
     'https://www.lycaste.eu',
     'https://dev.lycaste.eu',
-    os.getenv("SERVER_IP"),
 ]
 
 # Application definition
