@@ -14,7 +14,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - prod_network
+      - internal_network
 
   django:
     build: ./lycaste
@@ -33,7 +33,7 @@ services:
     depends_on:
       - db
     networks:
-      - prod_network
+      - internal_network
 
   certbot:
     image: certbot/certbot:latest
@@ -51,7 +51,7 @@ services:
     volumes:
       - ./data/wordpress/db:/var/lib/mysql
     networks:
-      - prod_network
+      - internal_network
 
   wordpress:
     image: wordpress:latest
@@ -66,7 +66,7 @@ services:
     depends_on:
       - wordpressdb
     networks:
-      - prod_network
+      - internal_network
 
   mailserver:
     image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
@@ -107,8 +107,8 @@ services:
       - django
       - wordpress
     networks:
-      - prod_network
+      - internal_network
       
 networks:
-  prod_network:
+  internal_network:
       driver: bridge
