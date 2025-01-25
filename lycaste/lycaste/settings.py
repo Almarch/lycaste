@@ -44,10 +44,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://lycaste.eu',
     'https://www.lycaste.eu',
     'https://dev.lycaste.eu',
+    'http://localhost:8000',
 ]
-
-SECURE_SSL_REDIRECT = False
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
