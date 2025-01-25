@@ -40,7 +40,6 @@ services:
     restart: always
     volumes:
       - ./nginx_dev.conf:/etc/nginx/nginx.conf
-      - ./data/certbot/conf/:/etc/nginx/ssl/:ro
     ports:
       - "8000:8000"
     depends_on:
