@@ -120,6 +120,23 @@ New mailbox on thunderbird :
 
 ![image](https://github.com/user-attachments/assets/b1b00727-ffe9-4986-a4cb-ccdd5a1f7537)
 
+## database backups and migrations
+
+From the source:
+
+```cp
+docker exec -t id123 pg_dump -U admin db_prod > ./backup/$(date +\%Y\%m\%d).sql
+```
+
+To the target:
+
+```cp
+docker cp ./backup/20250125.sql id456:/backup.sql
+docker exec -t id456 psql -U admin -d db_dev -f /backup.sql
+```
+
+
+
 ## Wordpress
 
 A wordpress image is also used in order to support the website design, at the adress draft.lycaste.eu. It is behind ufw and only a few IPs have access to it.
