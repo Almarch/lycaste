@@ -28,7 +28,7 @@ if not SECRET_KEY:
 # e.g. export DJANGO_SECRET_KEY="123"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'lycaste.eu', 'www.lycaste.eu']
 CSRF_TRUSTED_ORIGINS = [

@@ -5,7 +5,7 @@
 from the bash of django container:
 
 ```sh
- docker exec -it id123 bash
+docker exec -it id123 bash
 ```
 
 ```sh
