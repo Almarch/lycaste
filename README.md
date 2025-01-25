@@ -33,13 +33,15 @@ The project is dockerized using docker-compose.
 
 2 important folders are not gitted:
 
-- .env contains all secrets (db & django app credentials). It looks like:
+- .env contains all secrets (db & django app credentials) and the environment info (prod/dev). It looks like:
 
 ```sh
+ENVIRONMENT=prod
 POSTGRES_DB=db_prod
 POSTGRES_USER=admin
-POSTGRES_PASSWORD=qwerty
-DJANGO_SECRET_KEY=12345
+POSTGRES_PASSWORD=123
+DJANGO_SECRET_KEY=abc
+POSTGRES_PORT_MAPPING="123:123"
 ```
 
 - data which is made as such:
@@ -104,7 +106,7 @@ It is important to well parameterize the SPF so that the mails are not red-flagg
 In order to generate the keys, use the dedicated service:
 
 ```sh
-docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu --force-renewal
+docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu -d dev.lycaste.eu --force-renewal
 ```
 
 ## email access
