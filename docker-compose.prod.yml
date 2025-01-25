@@ -41,33 +41,6 @@ services:
       - ./data/certbot/www/:/var/www/certbot/:rw
       - ./data/certbot/conf/:/etc/letsencrypt/:rw
 
-  wordpressdb:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_ROOT_PASSWORD: ""
-      MYSQL_DATABASE: wp
-    volumes:
-      - ./data/wordpress/db:/var/lib/mysql
-    networks:
-      - internal_network
-
-  wordpress:
-    image: wordpress:latest
-    restart: always
-    environment:
-      WORDPRESS_DB_HOST: wordpressdb:3306
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: ""
-      WORDPRESS_DB_NAME: wp
-    volumes:
-      - ./data/wordpress/content:/var/www/html/wp-content
-    depends_on:
-      - wordpressdb
-    networks:
-      - internal_network
-
   mailserver:
     image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
     restart: always

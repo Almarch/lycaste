@@ -111,7 +111,7 @@ It is important to well parameterize the SPF so that the mails are not red-flagg
 In order to generate the keys, use the dedicated service:
 
 ```sh
-docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu -d draft.lycaste.eu -d dev.lycaste.eu --force-renewal
+docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu --force-renewal
 ```
 
 ## email access
@@ -135,11 +135,9 @@ docker cp ./backup/20250125.sql id456:/backup.sql
 docker exec -t id456 psql -U admin -d db_dev -f /backup.sql
 ```
 
-
-
 ## Wordpress
 
-A wordpress image is also used in order to support the website design, at the adress draft.lycaste.eu. It is behind ufw and only a few IPs have access to it.
+A wordpress image is also used in order to support the website design. It is behind ufw and only a few IPs have access to it.
 
 ## Database access
 

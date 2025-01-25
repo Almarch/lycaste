@@ -14,7 +14,7 @@ services:
     ports:
       - "5433:5432"
     networks:
-      - internal_network
+      - internal_network_dev
 
   django_dev:
     build: ./lycaste
@@ -30,11 +30,42 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_HOST=db_dev
       - POSTGRES_PORT=5432
+    ports:
+      - "8000:80"
     depends_on:
       - db_dev
     networks:
-      - internal_network
+      - internal_network_dev
+
+  db_wp:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: wp
+    volumes:
+      - ./data/wordpress/db:/var/lib/mysql
+    networks:
+      - internal_network_dev
+
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db_wp:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ""
+      WORDPRESS_DB_NAME: wp
+    volumes:
+      - ./data/wordpress/content:/var/www/html/wp-content
+    depends_on:
+      - db_wp
+    ports:
+      - "7000:80"
+    networks:
+      - internal_network_dev
       
 networks:
-  internal_network:
+  internal_network_dev:
       driver: bridge
