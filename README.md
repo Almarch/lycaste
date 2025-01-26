@@ -112,7 +112,7 @@ to enter the container from which `python manage.py` commands may be launched.
 
 UFW should then be parameterized as such:
 
-![image](https://github.com/user-attachments/assets/35b3ad8a-8d72-4741-88a3-868991809489)
+![image](https://github.com/user-attachments/assets/998643a3-2891-4394-a1d9-867fe150040f)
 
 UFW and docker both interact with iptables hence may have a competitive behavior (see [this blog](https://blog.jarrousse.org/2023/03/18/how-to-use-ufw-firewall-with-docker-containers/)).
 
