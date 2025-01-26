@@ -153,13 +153,13 @@ New mailbox on thunderbird :
 
 From the source:
 
-```cp
+```sh
 docker exec -t id123 pg_dump -U admin db_prod > ./backup/$(date +\%Y\%m\%d).sql
 ```
 
 To the target:
 
-```cp
+```sh
 docker cp ./backup/20250125.sql id456:/backup.sql
 docker exec -t id456 psql -U admin -d db_dev -f /backup.sql
 ```

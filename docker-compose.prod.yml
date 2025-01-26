@@ -41,7 +41,9 @@ services:
     volumes:
       - ./data/certbot/www/:/var/www/certbot/:rw
       - ./data/certbot/conf/:/etc/letsencrypt/:rw
-
+    networks:
+      - internal_network
+      
   mailserver:
     image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
     restart: always
