@@ -96,6 +96,22 @@ docker exec -it id123 bash
 
 to enter the container from which `python manage.py` commands may be launched.
 
+## configure UFW
+
+ufw and docker both interact with iptables hence may have a competitive behavior (see [this blog](https://blog.jarrousse.org/2023/03/18/how-to-use-ufw-firewall-with-docker-containers/)).
+
+To force ufw to prevail over docker:
+
+```sh
+echo '{
+    "iptables": false
+}' | sudo tee /etc/docker/daemon.json
+sudo systemctl restart docker
+sudo sed -i -e 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' /etc/default/ufw
+sudo ufw reload
+sudo bash -c "iptables -t nat -A POSTROUTING ! -o docker0 -s 172.17.0.0/16 -j MASQUERADE"
+```
+
 ## create email user
 
 from within the smtp container:
