@@ -122,7 +122,7 @@ sudo systemctl restart docker
 
 UFW should then be parameterized as such:
 
-![image](https://github.com/user-attachments/assets/35b3ad8a-8d72-4741-88a3-868991809489)
+![image](https://github.com/user-attachments/assets/998643a3-2891-4394-a1d9-867fe150040f)
 
 ## create email user
 
