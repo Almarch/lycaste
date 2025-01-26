@@ -90,8 +90,8 @@ These files need to be manually added to the VPS environment.
 The app is built & launched using:
 
 ```sh
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 ```
 
 To manage the django app, it is required to enter within the webapp container. First identify the webapp container id:
@@ -129,8 +129,8 @@ UFW should then be parameterized as such:
 from within the smtp container:
 
 ```sh
-docker-compose exec mailserver setup email add user@lycaste.eu
-docker-compose exec mailserver setup email list
+docker compose exec mailserver setup email add user@lycaste.eu
+docker compose exec mailserver setup email list
 ```
 
 It is important to well parameterize the SPF so that the mails are not red-flagged (see [OVH documentation](https://help.ovhcloud.com/csm/fr-dns-spf-record?id=kb_article_view&sysparm_article=KB0051712)) ; and to make sure the domain links to the IP with no competition with for instance OVH mail hosting services.
@@ -140,7 +140,7 @@ It is important to well parameterize the SPF so that the mails are not red-flagg
 In order to generate the keys, use the dedicated service:
 
 ```sh
-docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu --force-renewal
+docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu --force-renewal
 ```
 
 ## email access
