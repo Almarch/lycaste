@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
 
   db:
@@ -43,7 +41,7 @@ services:
       - ./data/certbot/conf/:/etc/letsencrypt/:rw
     networks:
       - internal_network
-      
+
   mailserver:
     image: ghcr.io/docker-mailserver/docker-mailserver:14.0.0
     restart: always
