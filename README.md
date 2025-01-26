@@ -1,4 +1,4 @@
-# Django config & 
+# notes
 
 ## Migrations
 
@@ -108,7 +108,9 @@ echo '{
 sudo systemctl restart docker
 ```
 
-UFW should be parameterized as such:
+UFW should then be parameterized as such:
+
+![image](https://github.com/user-attachments/assets/35b3ad8a-8d72-4741-88a3-868991809489)
 
 ## create email user
 
