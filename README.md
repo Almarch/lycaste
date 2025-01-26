@@ -52,6 +52,8 @@ ln -s docker-compose.prod.yml docker-compose.yml
 
 - data which is made as such:
 
+in the prod envt:
+
 ```sh
 mkdir data
 mkdir data/db
@@ -67,10 +69,20 @@ mkdir data/mailserver/config
 mkdir data/certbot
 mkdir data/certbot/www
 mkdir data/certbot/conf
+```
+
+in the dev envt:
+
+```sh
+mkdir data
+mkdir data/db
+mkdir data/img
+mkdir data/migrations
+mkdir data/migrations/main
+mkdir data/migrations/authentication
 mkdir data/wordpress
 mkdir data/wordpress/db
 mkdir data/wordpress/content
-sudo chmod -R 755 data
 ```
 
 These files need to be manually added to the VPS environment.
