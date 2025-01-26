@@ -110,19 +110,13 @@ to enter the container from which `python manage.py` commands may be launched.
 
 ## firewall
 
-ufw and docker both interact with iptables hence may have a competitive behavior (see [this blog](https://blog.jarrousse.org/2023/03/18/how-to-use-ufw-firewall-with-docker-containers/)).
-
-Prevent docker from managing iptables:
-```sh
-echo '{
-    "iptables": false
-}' | sudo tee /etc/docker/daemon.json
-sudo systemctl restart docker
-```
-
 UFW should then be parameterized as such:
 
 ![image](https://github.com/user-attachments/assets/35b3ad8a-8d72-4741-88a3-868991809489)
+
+UFW and docker both interact with iptables hence may have a competitive behavior (see [this blog](https://blog.jarrousse.org/2023/03/18/how-to-use-ufw-firewall-with-docker-containers/)).
+
+The certbot service notably needs access to iptables.  
 
 ## create email user
 
