@@ -123,7 +123,7 @@ It is important to well parameterize the SPF so that the mails are not red-flagg
 
 UFW should then be parameterized as such:
 
-![image](https://github.com/user-attachments/assets/d5133f6d-02fd-479b-b7e0-5224c595019c)
+![image](https://github.com/user-attachments/assets/998643a3-2891-4394-a1d9-867fe150040f)
 
 UFW and docker both interact with iptables hence may have a competitive behavior (see [this blog](https://blog.jarrousse.org/2023/03/18/how-to-use-ufw-firewall-with-docker-containers/)). To keep control over IP access, unallow docker to access iptables:
 
