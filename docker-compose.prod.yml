@@ -56,7 +56,7 @@ services:
       - ./data/mailserver/mail-state/:/var/mail-state/
       - ./data/mailserver/mail-logs/:/var/log/mail/
       - ./data/mailserver/config/:/tmp/docker-mailserver/
-      - /etc/letsencrypt/:/etc/letsencrypt:ro
+      - ./data/certbot/conf/:/etc/letsencrypt:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       - ENABLE_SPAMASSASSIN=0

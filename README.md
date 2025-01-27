@@ -108,16 +108,6 @@ docker exec -it id123 bash
 
 to enter the container from which `python manage.py` commands may be launched.
 
-## firewall
-
-UFW should then be parameterized as such:
-
-![image](https://github.com/user-attachments/assets/998643a3-2891-4394-a1d9-867fe150040f)
-
-UFW and docker both interact with iptables hence may have a competitive behavior (see [this blog](https://blog.jarrousse.org/2023/03/18/how-to-use-ufw-firewall-with-docker-containers/)).
-
-The certbot service notably needs access to iptables.  
-
 ## create email user
 
 from within the smtp container:
@@ -129,12 +119,47 @@ docker compose exec mailserver setup email list
 
 It is important to well parameterize the SPF so that the mails are not red-flagged (see [OVH documentation](https://help.ovhcloud.com/csm/fr-dns-spf-record?id=kb_article_view&sysparm_article=KB0051712)) ; and to make sure the domain links to the IP with no competition with for instance OVH mail hosting services.
 
-## create ssl keys
+## firewall
 
-In order to generate the keys, use the dedicated service:
+UFW should then be parameterized as such:
+
+![image](https://github.com/user-attachments/assets/998643a3-2891-4394-a1d9-867fe150040f)
+
+UFW and docker both interact with iptables hence may have a competitive behavior (see [this blog](https://blog.jarrousse.org/2023/03/18/how-to-use-ufw-firewall-with-docker-containers/)). To keep control over IP access, unallow docker to access iptables:
 
 ```sh
-docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu --force-renewal
+echo '{
+    "iptables": false
+}' | sudo tee /etc/docker/daemon.json
+sudo systemctl restart docker
+sudo ufw reload
+```
+
+## create ssl 
+
+The certbot service needs access to iptables. Therefore, allow docker to access docker. Before restarting docker, all services should be gracefully shut down.
+
+```sh
+echo '{
+    "iptables": true
+}' | sudo tee /etc/docker/daemon.json
+sudo systemctl restart docker
+```
+
+After restarting docker services should be relaunched.
+
+```sh
+docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d lycaste.eu -d www.lycaste.eu -d mail.lycaste.eu
+```
+
+After renewing the certificates, reinforce UFW rules:
+
+```sh
+echo '{
+    "iptables": false
+}' | sudo tee /etc/docker/daemon.json
+sudo systemctl restart docker
+sudo ufw reload
 ```
 
 ## email access
